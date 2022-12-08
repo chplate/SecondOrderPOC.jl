@@ -27,6 +27,7 @@ Through [MathOptInterface.jl](https://github.com/jump-dev/MathOptInterface.jl), 
 To use `SecondOrderPOC.jl`, install it via:
 
 ```julia
+]add https://github.com/chplate/SwitchTimeOpt.jl
 ]add https://github.com/chplate/SecondOrderPOC.jl
 using SecondOrderPOC
 ```
