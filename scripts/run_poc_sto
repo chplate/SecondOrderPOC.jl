@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Define a string variable with a value
+tolerances="1e-6"
+problems="3 4 5"
+N=$(printf "%s " {5..250..5})
+N_STO=$(printf "%s " {2..51})
+ngrid="100 200 300 400 500"
+counter=0
+# Start POC + warmstarted STO problems
+for tolerance in $tolerances; do
+	for problem in $problems; do 
+		taskset -c $counter julia --project runExamples.jl --poc_stoWS true --problems $problem --bfgs false --N $N --ngrid $ngrid --use_ngrid true --tolerance $tolerance --maxIter 500 --parallel_worker_ID $counter &
+		sleep 10
+		counter=$((counter + 1))
+	done
+done
+
+# Start single STO problems
+for tolerance in $tolerances; do
+	for problem in $problems; do
+		taskset -c $counter julia --project runExamples.jl --poc false --sto true --problems $problem --bfgs false --N $N_STO --ngrid $ngrid --tolerance $tolerance --maxIter 500 --parallel_worker_ID $counter &
+		sleep 10
+		counter=$((counter + 1))
+	done
+done
+
+exit 0
+
