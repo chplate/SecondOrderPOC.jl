@@ -123,7 +123,7 @@ function pocproblem(
     propagate_dynamics!(POCev, omega0ws)
 
     model = solver
-    MathOptInterface.empty!(model)
+    #MathOptInterface.empty!(model)
     omega = MathOptInterface.add_variables(model, numVar)
     for w in omega # Add bounds for controls
         MathOptInterface.add_constraint(model, w, MathOptInterface.GreaterThan(0.0))
@@ -314,7 +314,7 @@ function pocproblem(
     propagate_dynamics!(POCev, omega0ws)
 
     model = solver
-    MathOptInterface.empty!(model)
+    #MathOptInterface.empty!(model)
     omega = MathOptInterface.add_variables(model, numVar)
     for w in omega # Add bounds for controls
         MathOptInterface.add_constraint(model, w, MathOptInterface.GreaterThan(0.0))
