@@ -18,7 +18,7 @@ The problem addressed in this package is of the following form:
 \end{aligned}
 ```
 
-The implementation uses a direct, first-discretize-then-optimize approach. This involves a discretization of the control functions $w_i(t)$ as piecewise constant functions on $N$ control intervals. Moreover, the dynamics of the ODE are linearized and integrated via matrix exponentials. In particular, this implementation is based on the approach used in the package [SwitchTimeOpt.jl](https://github.com/oxfordcontrol/SwitchTimeOpt.jl), a package for solving switching time optimization (STO) problems for linear and nonlinear systems. 
+The implementation uses a first-discretize-then-optimize approach. This involves a discretization of the control functions $w_i(t)$ as piecewise constant functions on $N$ control intervals. Moreover, the dynamics of the ODE are linearized and integrated via matrix exponentials. In particular, this implementation is based on the Julia package [SwitchTimeOpt.jl](https://github.com/oxfordcontrol/SwitchTimeOpt.jl) for solving switching time optimization (STO) problems for linear and nonlinear systems. 
 
 Through [MathOptInterface.jl](https://github.com/jump-dev/MathOptInterface.jl), several NLP solvers can be interfaced to our code, for example [Ipopt](https://github.com/jump-dev/Ipopt.jl), [KNITRO](https://github.com/jump-dev/KNITRO.jl) and [NLopt](https://github.com/JuliaOpt/NLopt.jl). 
 
